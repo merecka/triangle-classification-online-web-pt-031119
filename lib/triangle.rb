@@ -13,8 +13,8 @@ class Triangle
     if self.side1 <= 0 || self.side2 <= 0 || self.side3 <= 0
       begin
         raise TriangleError
-      rescue TriangleError => error
-        error.message
+    #  rescue TriangleError => error
+    #    error.message
       end
       #Equilateral triangle: An equilateral triangle is a triangle that has three equal sides.
     elsif ((self.side1.to_f + self.side2.to_f + self.side3.to_f) / 3).to_f == self.side3.to_f
