@@ -10,11 +10,11 @@ class Triangle
 
   def kind
 
-    if self.side1 <= 0 || self.side2 <= 0 || self.side3 <= 0
+    if self.side1 <= 0 || self.side2 <= 0 || self.side3 <= 0 || (self.side1 + self.side2) <= self.side3 || (self.side1 + self.side3) <= self.side2 || (self.side2 + self.side3) <= self.side1
       begin
         raise TriangleError
-      rescue TriangleError => error
-        error.message
+    #  rescue TriangleError => error
+    #    error.message
       end
       #Equilateral triangle: An equilateral triangle is a triangle that has three equal sides.
     elsif ((self.side1.to_f + self.side2.to_f + self.side3.to_f) / 3).to_f == self.side3.to_f
