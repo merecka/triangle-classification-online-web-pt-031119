@@ -9,25 +9,30 @@ class Triangle
   end
 
   def kind
-    if (self.side1 + self.side2) < self.side3 || (self.side1 + self.side3) < self.side2 || (self.side2 + self.side3) < self.side1
+    # if (self.side1 + self.side2) < self.side3 || (self.side1 + self.side3) < self.side2 || (self.side2 + self.side3) < self.side1 || self.side1 < 0 || self.side2 < 0 || self.side3 < 0
+    if self.side1 < 0 || self.side2 < 0 || self.side3 < 0
       begin
         raise TriangleError
       rescue TriangleError => error
         puts error.message
       end
-    elsif self.side1 != self.side2 && self.side1 != self.side3 && self.side2 != self.side3
-      :scalene
-    elsif self.side1 == self.side2 || self.side1 == self.side3 || self.side2 == self.side3
-      :isosceles
-    elsif self.side1 == self.side2 && self.side1 == self.side3 && self.side2 == self.side3
-      :equilateral
+      #Equilateral triangle: An equilateral triangle is a triangle that has three equal sides.
+    elsif ((self.side1.to_f + self.side2.to_f + self.side3.to_f) / 3).to_f == self.side3.to_f
+        :equilateral
+        #Isosceles triangle: An isosceles triangle is a triangle that has two equal sides.
+      elsif self.side1 == self.side2 || self.side2 == self.side3 || self.side1 == self.side3
+        :isosceles
+        #Scalene Triangle:  A scalene triangle is a triangle that has no equal sides.
+      elsif self.side1 != self.side2 && self.side1 != self.side3 && self.side2 != self.side3
+        :scalene
     end
 
   end
 
-  class TriangleError
+  class TriangleError < StandardError
     def message
       "Invalid Triangle: The length of any two sides must be larger than the third side"
     end
+  end
 
 end

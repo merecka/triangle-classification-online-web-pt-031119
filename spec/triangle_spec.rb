@@ -1,3 +1,5 @@
+require 'pry'
+
 describe 'Triangle' do
 
   it 'knows that equilateral triangles have equal sides' do
@@ -14,6 +16,7 @@ describe 'Triangle' do
 
   it 'knows that isosceles triangles have first and last sides equal' do
     expect(Triangle.new(4, 3, 4).kind).to eq(:isosceles)
+  #  binding.pry
   end
 
   it 'knows that isosceles triangles have two first sides equal' do
